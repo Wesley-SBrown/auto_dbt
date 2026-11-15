@@ -18,7 +18,7 @@ def get_output_path(output_filename: str) -> str:
     """
     output_filepath = (Path(__file__)
                         .resolve()
-                        .parents[2]
+                        .parents[1]
                         / "data" / "inputs" / output_filename
                       )
     return output_filepath
