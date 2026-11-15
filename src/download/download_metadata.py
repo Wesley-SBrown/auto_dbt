@@ -3,9 +3,8 @@
 import gzip
 import json
 import requests
-from pathlib import Path
 
-from utils import get_output_path
+from ..utils import get_output_path
 URL = "https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/raw/meta_categories/meta_Automotive.jsonl.gz"
 
 
