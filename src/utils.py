@@ -24,6 +24,9 @@ def get_output_path(output_filename: str) -> str:
     return output_filepath
 
 def get_connection():
+    """
+    Uses env vars to get connection to snowflake
+    """
     import os
     from dotenv import load_dotenv
     import snowflake.connector

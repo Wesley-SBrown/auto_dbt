@@ -9,6 +9,11 @@ load_dotenv()
 
 
 def verify_setup() -> None:
+    """
+    Confirms setup performed in setup.py worked
+    Checks for warehouse, database, schema, file formats, stages, 
+    and tables created with the env vars.
+    """
     conn = get_connection()
     cursor = conn.cursor()
 

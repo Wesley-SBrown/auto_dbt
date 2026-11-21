@@ -10,6 +10,10 @@ from ..base_queries import QUERIES
 load_dotenv()
 
 def run_setup() -> None:
+    """
+    Runs pre-defined setup queries found in base_queries.py
+    using user defined env vars
+    """
     conn = get_connection()
     cursor = conn.cursor()
 
