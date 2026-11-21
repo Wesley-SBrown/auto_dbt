@@ -23,7 +23,7 @@ def verify_setup() -> None:
         wh_rows = cursor.fetchall()
         print(f"Warehouse '{warehouse}' found: {len(wh_rows) > 0}")
         for row in wh_rows:
-            print(f"  name={row[0]}, state={row[1]}, size={row[3]}")
+            print(f"   name={row[0]}, state={row[1]}, size={row[3]}")
 
         # Check for database
         cursor.execute(f"SHOW DATABASES LIKE '{db}'")
@@ -49,7 +49,7 @@ def verify_setup() -> None:
         stage_rows = cursor.fetchall()
         print(f"Stages ({len(stage_rows)})")
         for row in stage_rows:
-            print(f"   name={row[1]}, url={row[3]}, type={row[4]}")
+            print(f"   name={row[1]}, type={row[3]}")
 
         # Check tables & cols in schema
         cursor.execute(f"SHOW TABLES IN SCHEMA {db}.{schema}")
@@ -57,7 +57,7 @@ def verify_setup() -> None:
         print(f"Tables ({len(table_rows)}):")
         for row in table_rows:
             table_name = row[1]
-            print(f"   table={table_name}, rows={row[4]}")
+            print(f"   table={table_name}, rows={row[7]}, bytes={row[8]}")
             cursor.execute(f"DESCRIBE TABLE {db}.{schema}.{table_name}")
             for col in cursor.fetchall():
                 print(f"       col={col[0]} ({col[1]}), null={col[3]}")
@@ -66,7 +66,7 @@ def verify_setup() -> None:
     except Exception as e:
         print(f"[ERROR] Verification failed: {e}")
     finally:
-        cursor.close
+        cursor.close()
         conn.close()
 
 if __name__=="__main__":
